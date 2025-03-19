@@ -1,0 +1,1 @@
+Gets your playlists and stores playlists and artists in a file

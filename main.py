@@ -2,18 +2,13 @@ from dotenv import load_dotenv
 import spotipy
 import os
 from spotipy.oauth2 import SpotifyClientCredentials
+from spotipy.oauth2 import SpotifyOAuth
 import pandas as pd
 import itertools
 
 load_dotenv()
+CLIENT_ID = os.getenv('CLIENT_ID')
 CLIENT_SECRET = os.getenv('CLIENT_SECRET')
-
-
-sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="7c968afe5eef48fdb0c909c898304f7c",
-                                                           client_secret=CLIENT_SECRET))
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
-
 
 def show_tracks(results):
     for i, item in enumerate(results['items']):
@@ -23,7 +18,7 @@ def show_tracks(results):
 
 if __name__ == '__main__':
     scope = 'playlist-read-private'
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="7c968afe5eef48fdb0c909c898304f7c",
+    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
                                                            client_secret=CLIENT_SECRET,
                                                    redirect_uri='http://127.0.0.1:3000', scope=scope))
 
